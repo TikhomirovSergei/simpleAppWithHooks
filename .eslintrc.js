@@ -17,6 +17,7 @@ module.exports = {
         "plugin:@typescript-eslint/recommended", // Uses the recommended rules from @typescript-eslint/eslint-plugin
         "prettier/@typescript-eslint", // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
         "plugin:prettier/recommended", // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+        "plugin:react-hooks/recommended",
     ],
     rules: {
         "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -28,5 +29,12 @@ module.exports = {
         "@typescript-eslint/interface-name-prefix": "off",
         "@typescript-eslint/no-use-before-define": "off",
         "react/prop-types": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": [
+            "warn",
+            {
+                additionalHooks: "(useMyCustomHook|useMyOtherCustomHook)",
+            },
+        ],
     },
 };
