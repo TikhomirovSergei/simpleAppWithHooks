@@ -6,4 +6,6 @@ module.exports = {
     tabWidth: 4,
     bracketSpacing: true,
     jsxBracketSameLine: true,
+    importOrder: ["^@+", "^[a-z]+", "/components+", "/actions+", "/reducers+", "/store+"],
+    importOrderSeparation: true,
 };

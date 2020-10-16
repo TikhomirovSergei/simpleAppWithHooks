@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+
 import { changeCounter } from "../redux/actions/test";
 
 const TestComponent = () => {
