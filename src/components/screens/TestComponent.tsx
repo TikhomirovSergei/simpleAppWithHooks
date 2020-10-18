@@ -3,7 +3,7 @@ import { Button, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
 
-import { changeCounter, getWeather } from "../redux/actions/test";
+import { changeCounter, getWeather } from "../../redux/actions/test";
 
 const mapDispatchToProps = (dispatch: Function) => {
     return {

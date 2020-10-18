@@ -1,27 +1,23 @@
-import { NavigationContainer } from "@react-navigation/native";
-
 import React from "react";
 import { LogBox } from "react-native";
 import "react-native-gesture-handler";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
-import TestComponent from "./components/TestComponent";
+import App from "./components/App";
 
 import { persistor, store } from "./redux/store";
 
 LogBox.ignoreAllLogs();
 
-const App = () => {
+const Root = () => {
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-                <NavigationContainer>
-                    <TestComponent />
-                </NavigationContainer>
+                <App />
             </PersistGate>
         </Provider>
     );
 };
 
-export default App;
+export default Root;

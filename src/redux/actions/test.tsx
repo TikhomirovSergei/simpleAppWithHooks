@@ -1,5 +1,5 @@
-import { openweathermapApi } from "../../assets/apiKey";
 import { IWeatherInfoModel } from "../../interfaces/weatherInfoModel";
+import { openweathermapApi } from "../../private/apiKey";
 
 export const changeCounter = () => ({
     type: "CHANGE_COUNTER",

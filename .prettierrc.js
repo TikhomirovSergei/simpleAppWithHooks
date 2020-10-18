@@ -6,6 +6,15 @@ module.exports = {
     tabWidth: 4,
     bracketSpacing: true,
     jsxBracketSameLine: true,
-    importOrder: ["^@+", "^[a-z]+", "/components+", "/actions+", "/reducers+", "/store+"],
+    importOrder: [
+        "^@+",
+        "^[a-z]+",
+        "/components+",
+        "/(MainStackNavigator|screens|src|app.json|AnimatedPulse|ImageBox)+",
+        "/actions+",
+        "/reducers+",
+        "/store+",
+        "/styles+",
+    ],
     importOrderSeparation: true,
 };
