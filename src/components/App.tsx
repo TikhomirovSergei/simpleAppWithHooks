@@ -10,10 +10,8 @@ const App = () => {
     const [isLoaded, setAppLoaded] = useState(false);
 
     useEffect(() => {
-        setTimeout(() => {
-            setAppLoaded(true);
-        }, 3000);
-    });
+        setTimeout(() => setAppLoaded(true), 3000);
+    }, []);
 
     return isLoaded ? (
         <NavigationContainer>

@@ -14,6 +14,7 @@ module.exports = {
         "/actions+",
         "/reducers+",
         "/store+",
+        "/interfaces+",
         "/styles+",
     ],
     importOrderSeparation: true,

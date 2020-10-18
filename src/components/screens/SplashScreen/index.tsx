@@ -1,7 +1,8 @@
+import { animatedPulse } from "./animatedPulse";
+
 import React from "react";
 import { View } from "react-native";
 
-import { animatedPulse } from "./AnimatedPulse";
 import { ImageBox } from "./ImageBox";
 
 import { splashScreenStyles } from "../../../styles/splashScreenStyles";

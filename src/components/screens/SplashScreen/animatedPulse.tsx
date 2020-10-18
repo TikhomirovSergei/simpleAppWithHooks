@@ -6,8 +6,8 @@ export const animatedPulse = (startDelay = 100) => {
 
     const pulse = () => {
         Animated.sequence([
-            Animated.timing(scale, { toValue: 1.2, duration: 1000 } as any),
-            Animated.timing(scale, { toValue: 0.8, duration: 1000 } as any),
+            Animated.timing(scale, { toValue: 1.2, duration: 1000, useNativeDriver: true } as any),
+            Animated.timing(scale, { toValue: 0.8, duration: 1000, useNativeDriver: true } as any),
         ]).start(() => pulse());
     };
 
