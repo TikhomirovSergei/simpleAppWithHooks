@@ -1,12 +1,12 @@
 import { openweathermapApi } from "../../private/apiKey";
 import { GET_WEATHER_SUCCESS } from "../actionTypes";
 
-import { IWeatherInfoModel } from "../../interfaces/weatherInfoModel";
+import { IWeatherResponse } from "../../interfaces/weatherInfoModel";
 
 export function getWeather() {
     return function action(dispatch: Function) {
-        getWeatherAPI("466806")
-            .then((data: IWeatherInfoModel) => {
+        getWeatherAPI(47.890781, 56.638771)
+            .then((data: IWeatherResponse) => {
                 dispatch({ type: GET_WEATHER_SUCCESS, payload: data });
                 console.log(data);
             })
@@ -16,9 +16,11 @@ export function getWeather() {
     };
 }
 
-const getWeatherAPI = (cityID: string): Promise<IWeatherInfoModel> => {
+const getWeatherAPI = (lon: number, lat: number): Promise<IWeatherResponse> => {
     return new Promise((resolve, reject) => {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?id=${cityID}&lang=ru&appid=${openweathermapApi}`)
+        fetch(
+            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${openweathermapApi}&units=metric&lang=ru`,
+        )
             .then((resp) => resp.json())
             .then((data) => resolve(data))
             .catch((err) => reject(err));
