@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { StatusBar } from "react-native";
 import "react-native-gesture-handler";
 
 import { MainStackNavigator } from "./MainStackNavigator";
@@ -13,12 +14,17 @@ const App = () => {
         setTimeout(() => setAppLoaded(true), 3000);
     }, []);
 
-    return isLoaded ? (
-        <NavigationContainer>
-            <MainStackNavigator />
-        </NavigationContainer>
-    ) : (
-        <SplashScreen />
+    return (
+        <>
+            <StatusBar backgroundColor="#273c52" barStyle="light-content" />
+            {isLoaded ? (
+                <NavigationContainer>
+                    <MainStackNavigator />
+                </NavigationContainer>
+            ) : (
+                <SplashScreen />
+            )}
+        </>
     );
 };
 

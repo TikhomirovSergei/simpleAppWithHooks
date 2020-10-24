@@ -1,6 +1,7 @@
 import React from "react";
 import { LogBox } from "react-native";
 import "react-native-gesture-handler";
+import { Provider as PaperProvider } from "react-native-paper";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
@@ -13,9 +14,11 @@ LogBox.ignoreAllLogs();
 const Root = () => {
     return (
         <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-                <App />
-            </PersistGate>
+            <PaperProvider>
+                <PersistGate loading={null} persistor={persistor}>
+                    <App />
+                </PersistGate>
+            </PaperProvider>
         </Provider>
     );
 };
