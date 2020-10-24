@@ -26,7 +26,7 @@ const MainScreen = () => {
                 <Text style={{ fontWeight: "600", fontSize: 20 }}>{"Йошкар - Ола"}</Text>
             </View>
             <View style={{ width: "100%", height: "60%", justifyContent: "center", alignItems: "center" }}>
-                <Text style={{ fontWeight: "600", fontSize: 150 }}>
+                <Text style={{ fontWeight: "600", fontSize: 151 }}>
                     {current && current.current && current.current.temp}
                 </Text>
                 <Text style={{ fontWeight: "600", fontSize: 20 }}>
