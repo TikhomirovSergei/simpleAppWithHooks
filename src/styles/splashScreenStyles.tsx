@@ -4,7 +4,7 @@ export const splashScreenStyles = StyleSheet.create({
     container: {
         width: "100%",
         height: "100%",
-        backgroundColor: "deepskyblue",
+        backgroundColor: "#273c52",
         justifyContent: "center",
         alignItems: "center",
     },
