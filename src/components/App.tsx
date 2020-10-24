@@ -7,6 +7,8 @@ import "react-native-gesture-handler";
 import { MainStackNavigator } from "./MainStackNavigator";
 import SplashScreen from "./screens/SplashScreen";
 
+import { backgroundColor } from "../styles/headerStyles";
+
 const App = () => {
     const [isLoaded, setAppLoaded] = useState(false);
 
@@ -16,7 +18,7 @@ const App = () => {
 
     return (
         <>
-            <StatusBar backgroundColor="#273c52" barStyle="light-content" />
+            <StatusBar backgroundColor={backgroundColor} barStyle="light-content" />
             {isLoaded ? (
                 <NavigationContainer>
                     <MainStackNavigator />
