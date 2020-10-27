@@ -1,5 +1,8 @@
+import { getDate } from "../../../utils/dateHelper";
 import Header from "../../genenal/Header";
 import GeneralWeatherInfoItem from "./GeneralWeatherInfoItem";
+
+import { useNavigation } from "@react-navigation/native";
 
 import React, { useEffect } from "react";
 import { Text, View } from "react-native";
@@ -12,7 +15,7 @@ import { getWeather } from "../../../redux/actions/weatherAction";
 
 import { ICurrentModel, IWeatherResponse } from "../../../interfaces/weatherInfoModel";
 
-import { mainScreenStyles } from "../../../styles/MainScreenStyles";
+import { mainScreenStyles } from "../../../styles/mainScreenStyles";
 
 const mapDispatchToProps = () => {
     return {
@@ -21,6 +24,7 @@ const mapDispatchToProps = () => {
 };
 
 const MainScreen = () => {
+    const navigation = useNavigation();
     const current: IWeatherResponse = useSelector((state: any) => state.weather.current);
     const dispatch = useDispatch();
 
@@ -61,7 +65,7 @@ const MainScreen = () => {
             style={mainScreenStyles.footerPredictionButton}
             contentStyle={mainScreenStyles.footerPredictionButtonContent}
             labelStyle={mainScreenStyles.footerPredictionButtonLabel}
-            onPress={() => console.log("Pressed")}>
+            onPress={() => navigation.navigate("CurrentWeatherInfo")}>
             Прогноз на неделю
         </Button>
     );
@@ -86,7 +90,7 @@ const MainScreen = () => {
                     })}
                     {GeneralWeatherInfoItem({
                         weather: current && current.daily && current.daily[2],
-                        title: "После завтра",
+                        title: `${getDate(current && current.daily && current.daily[2] && current.daily[2].dt * 1000)}`,
                     })}
                     {weekPredictionButton()}
                 </View>

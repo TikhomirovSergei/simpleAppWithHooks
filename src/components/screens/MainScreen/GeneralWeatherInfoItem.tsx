@@ -1,10 +1,11 @@
+import CircleView from "../../genenal/CircleView";
+
 import React from "react";
 import { Image, Text, View } from "react-native";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { IDailyModel } from "../../../interfaces/weatherInfoModel";
 
-import { weatherInfoItemStyles } from "../../../styles/GeneralWeatherInfoItemStyles";
+import { weatherInfoItemStyles } from "../../../styles/generalWeatherInfoItemStyles";
 
 type WeatherInfoItemProps = {
     weather: IDailyModel;
@@ -12,12 +13,6 @@ type WeatherInfoItemProps = {
 };
 
 const GeneralWeatherInfoItem = (props: WeatherInfoItemProps) => {
-    const renderCircle = () => (
-        <View>
-            <MaterialCommunityIcons name={"circle-outline"} size={6} style={weatherInfoItemStyles.circleImage} />
-        </View>
-    );
-
     const renderWeatherInfo = (weather: IDailyModel, title: string) => {
         const icon = (weather && weather.weather && weather.weather[0] && weather.weather[0].icon) ?? "";
         const description = (weather && weather.weather && weather.weather[0] && weather.weather[0].description) ?? "";
@@ -35,10 +30,10 @@ const GeneralWeatherInfoItem = (props: WeatherInfoItemProps) => {
                 <Text style={weatherInfoItemStyles.text}>{description}</Text>
                 <Text style={weatherInfoItemStyles.temperatureText}>
                     {Number(day.toFixed(0))}
-                    {renderCircle()}
+                    <CircleView color="#ffffff" />
                     {"/"}
                     {Number(night.toFixed(0))}
-                    {renderCircle()}
+                    <CircleView color="#ffffff" />
                 </Text>
             </View>
         );

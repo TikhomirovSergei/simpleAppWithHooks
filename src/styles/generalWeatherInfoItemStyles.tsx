@@ -23,8 +23,4 @@ export const weatherInfoItemStyles = StyleSheet.create({
         right: 0,
         color: "#ffffff",
     },
-    circleImage: {
-        top: -5,
-        color: "#ffffff",
-    },
 });

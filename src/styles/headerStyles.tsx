@@ -7,6 +7,9 @@ export const headerStyles = StyleSheet.create({
     content: {
         alignItems: "center",
     },
+    contentLeft: {
+        alignItems: "flex-start",
+    },
     contentTitle: {
         color: "#ffffff",
     },
