@@ -61,10 +61,10 @@ const MainScreen = () => {
 
     const weekPredictionButton = () => (
         <Button
-            mode="outlined"
             style={mainScreenStyles.footerPredictionButton}
             contentStyle={mainScreenStyles.footerPredictionButtonContent}
             labelStyle={mainScreenStyles.footerPredictionButtonLabel}
+            color={"#273c52"}
             onPress={() => navigation.navigate("CurrentWeatherInfo")}>
             Прогноз на неделю
         </Button>

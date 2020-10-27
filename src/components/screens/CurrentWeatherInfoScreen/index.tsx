@@ -24,7 +24,7 @@ const CurrentWeatherInfoScreen = () => {
         <View style={{ marginVertical: 20, alignItems: "center" }}>
             <Text>{timeOfDay}</Text>
             <View style={{ flexDirection: "row", marginVertical: 5, alignItems: "center" }}>
-                <Text>{`${temp}`}</Text>
+                <Text>{`${temp.toFixed(0)}`}</Text>
                 <CircleView color="#000000" />
             </View>
         </View>
@@ -32,7 +32,8 @@ const CurrentWeatherInfoScreen = () => {
 
     const dayWeatherView = (weather: IDailyModel) => (
         <View style={{ alignItems: "center", width: 100 }}>
-            <Text>{getDate(weather.dt * 1000)}</Text>
+            <Text style={{ fontWeight: "500", fontSize: 20 }}>{getDate(weather.dt * 1000)}</Text>
+            <View style={{ width: 70, backgroundColor: "black", height: 2, marginBottom: 10 }} />
             <Image
                 style={{ height: 60, width: 60 }}
                 source={{
@@ -53,7 +54,7 @@ const CurrentWeatherInfoScreen = () => {
         </View>
     );
 
-    const horLine = () => <View style={{ backgroundColor: "black", width: 2, height: 340, marginVertical: 10 }} />;
+    const horLine = () => <View style={{ backgroundColor: "black", width: 2, height: 365, marginVertical: 10 }} />;
 
     return (
         <View style={{ width: "100%", height: "100%", backgroundColor: "white" }}>
