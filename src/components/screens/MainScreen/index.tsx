@@ -1,11 +1,12 @@
-import { getDate } from "../../../utils/dateHelper";
+import { getDayOfWeek } from "../../../utils/dateHelper";
 import Header from "../../genenal/Header";
 import GeneralWeatherInfoItem from "./GeneralWeatherInfoItem";
 
 import { useNavigation } from "@react-navigation/native";
 
-import React, { useEffect } from "react";
-import { Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { RefreshControl, Text, View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import LinearGradient from "react-native-linear-gradient";
 import { Button } from "react-native-paper";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -27,12 +28,13 @@ const MainScreen = () => {
     const navigation = useNavigation();
     const current: IWeatherResponse = useSelector((state: any) => state.weather.current);
     const dispatch = useDispatch();
+    const [refreshig, onRefresh] = useState(true);
 
     useEffect(() => {
-        dispatch(getWeather());
+        dispatch(getWeather(() => onRefresh(false)));
     }, []);
 
-    const currentTemp = (temp: number) => (
+    const currentTempView = (temp: number) => (
         <View style={mainScreenStyles.currentWeatherViewBlock}>
             <Text style={mainScreenStyles.currentWeatherViewTemp}>{temp}</Text>
             <MaterialCommunityIcons
@@ -43,7 +45,7 @@ const MainScreen = () => {
         </View>
     );
 
-    const currentTempDescription = (weather: ICurrentModel) => {
+    const currentTempDescriptionView = (weather: ICurrentModel) => {
         const description = (weather && weather.weather && weather.weather[0] && weather.weather[0].description) ?? "";
         return (
             <View style={mainScreenStyles.currentWeatherViewDescBlock}>
@@ -61,39 +63,52 @@ const MainScreen = () => {
 
     const weekPredictionButton = () => (
         <Button
+            disabled={refreshig}
             style={mainScreenStyles.footerPredictionButton}
             contentStyle={mainScreenStyles.footerPredictionButtonContent}
             labelStyle={mainScreenStyles.footerPredictionButtonLabel}
             color={"#273c52"}
-            onPress={() => navigation.navigate("CurrentWeatherInfo")}>
+            onPress={() => navigation.navigate("WeekWeatherInfo")}>
             Прогноз на неделю
         </Button>
     );
+
+    const footerView = () => (
+        <View style={mainScreenStyles.footer}>
+            {moreDetailsButton()}
+            {GeneralWeatherInfoItem({
+                weather: current && current.daily && current.daily[0],
+                title: "Сегодня",
+            })}
+            {GeneralWeatherInfoItem({
+                weather: current && current.daily && current.daily[1],
+                title: "Завтра",
+            })}
+            {GeneralWeatherInfoItem({
+                weather: current && current.daily && current.daily[2],
+                title: `${getDayOfWeek(current && current.daily && current.daily[2] && current.daily[2].dt * 1000)}`,
+            })}
+            {weekPredictionButton()}
+        </View>
+    );
+
+    const onRefreshAction = () => {
+        dispatch(getWeather(() => onRefresh(false)));
+    };
 
     return (
         <View style={mainScreenStyles.container}>
             {Header({ title: "Йошкар - Ола" })}
             <LinearGradient colors={["#273c52", "#8e9091"]} style={mainScreenStyles.gradient}>
-                <View style={mainScreenStyles.currentWeatherView}>
-                    {currentTemp(current && current.current && current.current.temp)}
-                    {currentTempDescription(current && current.current)}
-                </View>
-                <View style={mainScreenStyles.footer}>
-                    {moreDetailsButton()}
-                    {GeneralWeatherInfoItem({
-                        weather: current && current.daily && current.daily[0],
-                        title: "Сегодня",
-                    })}
-                    {GeneralWeatherInfoItem({
-                        weather: current && current.daily && current.daily[1],
-                        title: "Завтра",
-                    })}
-                    {GeneralWeatherInfoItem({
-                        weather: current && current.daily && current.daily[2],
-                        title: `${getDate(current && current.daily && current.daily[2] && current.daily[2].dt * 1000)}`,
-                    })}
-                    {weekPredictionButton()}
-                </View>
+                <ScrollView
+                    refreshControl={<RefreshControl refreshing={refreshig} onRefresh={onRefreshAction} />}
+                    style={{ top: 50 }}>
+                    <View style={mainScreenStyles.currentWeatherView}>
+                        {currentTempView(current && current.current && current.current.temp)}
+                        {currentTempDescriptionView(current && current.current)}
+                    </View>
+                </ScrollView>
+                {footerView()}
             </LinearGradient>
         </View>
     );

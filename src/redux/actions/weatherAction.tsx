@@ -3,14 +3,15 @@ import { GET_WEATHER_SUCCESS } from "../actionTypes";
 
 import { IWeatherResponse } from "../../interfaces/weatherInfoModel";
 
-export function getWeather() {
-    return function action(dispatch: Function) {
+export function getWeather(callback: Function) {
+    return async function action(dispatch: Function) {
         getWeatherAPI(47.890781, 56.638771)
             .then((data: IWeatherResponse) => {
                 dispatch({ type: GET_WEATHER_SUCCESS, payload: data });
-                console.log(data);
+                callback();
             })
             .catch((err) => {
+                callback();
                 console.log(err);
             });
     };

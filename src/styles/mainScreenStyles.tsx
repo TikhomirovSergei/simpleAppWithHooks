@@ -12,11 +12,11 @@ export const mainScreenStyles = StyleSheet.create({
         height: "100%",
     },
     currentWeatherView: {
-        flex: 1,
         width: Dimensions.get("window").width,
+        height: "100%",
         justifyContent: "center",
         alignItems: "center",
-        top: -Dimensions.get("window").height / 5,
+        paddingTop: Dimensions.get("screen").height / 16,
     },
     currentWeatherViewBlock: {
         flexDirection: "row",
