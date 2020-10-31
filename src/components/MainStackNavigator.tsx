@@ -3,6 +3,7 @@ import { createStackNavigator, TransitionPresets } from "@react-navigation/stack
 import React from "react";
 import "react-native-gesture-handler";
 
+import DayWeatherDetailsScreen from "./screens/DayWeatherDetailsScreen";
 import MainScreen from "./screens/MainScreen";
 import WeekWeatherInfoScreen from "./screens/WeekWeatherInfoScreen";
 
@@ -19,6 +20,7 @@ const MainStackNavigator = () => {
             }}>
             <Stack.Screen name="MainScreen" component={MainScreen} />
             <Stack.Screen name="WeekWeatherInfo" component={WeekWeatherInfoScreen} />
+            <Stack.Screen name="DayWeatherDetails" component={DayWeatherDetailsScreen} />
         </Stack.Navigator>
     );
 };

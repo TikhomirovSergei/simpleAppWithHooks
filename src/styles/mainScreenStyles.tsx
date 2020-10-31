@@ -28,7 +28,7 @@ export const mainScreenStyles = StyleSheet.create({
         color: "#ffffff",
     },
     currentWeatherViewTempIcom: {
-        top: 45,
+        top: -45,
         color: "#ffffff",
     },
     currentWeatherViewDescBlock: {
@@ -47,16 +47,20 @@ export const mainScreenStyles = StyleSheet.create({
         padding: 20,
     },
     footerMoreDetailView: {
+        top: 20,
+        marginRight: -5,
+    },
+    footerMoreDetailButton: {
         flexDirection: "row",
         alignSelf: "flex-end",
         justifyContent: "center",
-        margin: 0,
+        marginBottom: 20,
     },
     footerMoreDetailText: {
         color: "#ffffff",
     },
     footerMoreDetailIcon: {
-        top: -5,
+        top: -4,
         color: "#ffffff",
     },
     footerPredictionButton: {
