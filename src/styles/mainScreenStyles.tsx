@@ -20,7 +20,7 @@ export const mainScreenStyles = StyleSheet.create({
     },
     currentWeatherViewBlock: {
         flexDirection: "row",
-        alignItems: "flex-start",
+        alignItems: "center",
     },
     currentWeatherViewTemp: {
         fontWeight: "600",
