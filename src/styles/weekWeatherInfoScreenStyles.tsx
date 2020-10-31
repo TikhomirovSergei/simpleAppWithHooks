@@ -22,7 +22,7 @@ export const weekWeatherInfoScreenStyles = StyleSheet.create({
         marginHorizontal: 12,
     },
     cell_dayView: {
-        width: 40,
+        width: 45,
         alignItems: "center",
     },
     cell_titleText: {

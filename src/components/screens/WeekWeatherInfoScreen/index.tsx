@@ -1,4 +1,5 @@
 import { getDate, getDayOfWeek } from "../../../utils/dateHelper";
+import { getWeatherImage } from "../../../utils/imageHelper";
 import { getWindDirection } from "../../../utils/windDirection";
 import CircleView from "../../genenal/CircleView";
 import Header from "../../genenal/Header";
@@ -31,12 +32,7 @@ const WeekWeatherInfoScreen = () => {
 
     const cell_weatherView = (weather: IWeatherModel) => (
         <View style={weekWeatherInfoScreenStyles.cell_weatherView}>
-            <Image
-                style={weekWeatherInfoScreenStyles.cell_weatherImage}
-                source={{
-                    uri: `http://openweathermap.org/img/wn/${weather.icon}@2x.png`,
-                }}
-            />
+            <Image style={weekWeatherInfoScreenStyles.cell_weatherImage} source={getWeatherImage(weather.icon)} />
             <Text style={weekWeatherInfoScreenStyles.cell_weatherDesc}>{`${weather.description}`}</Text>
         </View>
     );

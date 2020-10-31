@@ -1,3 +1,4 @@
+import { getWeatherImage } from "../../../utils/imageHelper";
 import CircleView from "../../genenal/CircleView";
 
 import React from "react";
@@ -20,12 +21,7 @@ const GeneralWeatherInfoItem = (props: WeatherInfoItemProps) => {
         const night = (weather && weather.temp && weather.temp.night) ?? 0;
         return (
             <View style={weatherInfoItemStyles.view}>
-                <Image
-                    style={weatherInfoItemStyles.image}
-                    source={{
-                        uri: `http://openweathermap.org/img/wn/${icon}@2x.png`,
-                    }}
-                />
+                <Image style={weatherInfoItemStyles.image} source={getWeatherImage(icon)} />
                 <Text style={weatherInfoItemStyles.text}>{`${title}: `}</Text>
                 <Text style={weatherInfoItemStyles.text}>{description}</Text>
                 <Text style={weatherInfoItemStyles.temperatureText}>

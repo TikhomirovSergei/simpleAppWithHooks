@@ -63,6 +63,7 @@ const MainScreen = () => {
 
     const weekPredictionButton = () => (
         <Button
+            mode="outlined"
             disabled={refreshig}
             style={mainScreenStyles.footerPredictionButton}
             contentStyle={mainScreenStyles.footerPredictionButtonContent}

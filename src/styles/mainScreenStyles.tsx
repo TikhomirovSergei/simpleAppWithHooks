@@ -67,7 +67,8 @@ export const mainScreenStyles = StyleSheet.create({
         height: 55,
     },
     footerPredictionButtonContent: {
-        padding: 10,
+        width: "100%",
+        height: "100%",
     },
     footerPredictionButtonLabel: {
         color: "#000000",
