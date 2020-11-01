@@ -1,6 +1,6 @@
 export const getWindDirection = (degrees: number) => {
     switch (true) {
-        case degrees > 337.5 && degrees <= 22.5:
+        case degrees > 337.5 || degrees <= 22.5:
             return "С";
         case degrees > 22.5 && degrees <= 67.5:
             return "С-В";

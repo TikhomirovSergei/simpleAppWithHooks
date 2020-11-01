@@ -36,6 +36,10 @@ export const weekWeatherInfoScreenStyles = StyleSheet.create({
     cell_weatherImage: {
         height: 50,
         width: 50,
+        shadowOffset: { width: 10, height: 10 },
+        shadowColor: "black",
+        shadowOpacity: 1,
+        backgroundColor: "#0000",
     },
     cell_weatherDesc: {
         textAlign: "center",

@@ -50,7 +50,7 @@ const WeekWeatherInfoScreen = () => {
     const cell_weatherWindView = (wind_deg: number, wind_speed: number) => (
         <View style={weekWeatherInfoScreenStyles.cell_weatherWind}>
             <Text>{`${getWindDirection(wind_deg)}`}</Text>
-            <Text>{`${wind_speed} м/с`}</Text>
+            <Text>{`${wind_speed.toFixed(1)} м/с`}</Text>
         </View>
     );
 

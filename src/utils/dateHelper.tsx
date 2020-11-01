@@ -5,6 +5,11 @@ export const getDate = (time: number): string => {
     return `${zero}${day}.${date.getMonth() + 1}`;
 };
 
+export const getHour = (time: number): string => {
+    const date = new Date(time);
+    return `${date.getHours()}:00`;
+};
+
 export const getDayOfWeek = (time: number): string => {
     const date = new Date(time).getDay();
     switch (date) {
