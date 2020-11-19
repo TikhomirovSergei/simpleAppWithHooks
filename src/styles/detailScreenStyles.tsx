@@ -32,12 +32,15 @@ export const detailScreenStyles = StyleSheet.create({
 
 export const mainInfoViewStyles = StyleSheet.create({
     container: {
-        height: Dimensions.get("screen").height - 295,
+        flex: 1,
+        height: "100%",
+        justifyContent: "space-evenly",
         backgroundColor: "gainsboro",
         borderRadius: 20,
         marginHorizontal: 5,
         marginBottom: 5,
-        padding: 10,
+        paddingVertical: 50,
+        paddingHorizontal: 20,
     },
     view: {
         flex: 1,
@@ -60,6 +63,6 @@ export const mainInfoViewStyles = StyleSheet.create({
     },
     rightView: {
         flexDirection: "column",
-        width: "50%",
+        width: "40%",
     },
 });

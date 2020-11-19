@@ -121,13 +121,15 @@ const DayWeatherDetailsScreen = () => {
     return (
         <View style={weekWeatherInfoScreenStyles.container}>
             {Header({ title: "Йошкар - Ола", goBack })}
-            <SwipeListView
-                useFlatList={true}
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-                data={hourly}
-                renderItem={({ item }: any) => hourWeatherView(item)}
-            />
+            <View style={{ height: 160 }}>
+                <SwipeListView
+                    useFlatList={true}
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                    data={hourly}
+                    renderItem={({ item }: any) => hourWeatherView(item)}
+                />
+            </View>
             <View style={mainInfoViewStyles.container}>
                 {showTimeView()}
                 {showSecondLineView()}
